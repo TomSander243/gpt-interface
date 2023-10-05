@@ -1,8 +1,8 @@
 <main>
 	<div class="chat-container">
 		<div class="chat-box" />
-		<p class="chat-message">testaapodihaldsfk hsadiufha wsieufhbasief</p>
-		<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasdfad asdfsf</p>
+		<p class="chat-message">testaapo test test test test test test</p>
+		<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
 		<div class="chat-input-container">
 			<input type="text" class="chat-input" />
 		</div>
@@ -13,7 +13,7 @@
 	.chat-container {
 		width: 100%;
 		max-width: 600px;
-		height: 80vh;
+		height: 90vh;
 		border: 1px solid #ccc;
 		margin: auto;
 		display: flex;
@@ -22,8 +22,10 @@
 	}
 
 	.chat-box {
+		display: flex;
+		justify-content: flex-end;
 		flex: 1;
-		overflow-y: auto;
+		overflow: auto;
 		padding: 2vw;
 		font-family: 'IBM Plex Mono', monospace;
 	}
@@ -46,28 +48,26 @@
 		font-size: 1.5vw;
 		border: 1px solid #ccc;
 		width: fit-content;
+		max-width: calc(100% - 4vw);
 		padding: 0.3vw;
-		padding-left: 1vw;
 		margin-left: auto;
 		margin-right: 1vw;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
-		box-sizing: border-box;
-	}
-
-	.chat-message::first-line {
-		text-align: right;
+		word-break: break-word;
 	}
 
 	.chat-response {
 		font-size: 1.5vw;
 		border: 1px solid #ccc;
 		width: fit-content;
+		max-width: fit-content;
 		padding: 0.3vw;
 		margin-left: 1vw;
-		margin-right: auto;
+		margin-right: 2vw;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
+		word-break: break-word;
 	}
 
 	@media only screen and (max-width: 600px) {
@@ -87,11 +87,19 @@
 		.chat-input {
 			padding: 2vw;
 		}
+
+		.chat-message {
+			font-size: 4vw;
+		}
+
+		.chat-response {
+			font-size: 4vw;
+		}
 	}
 
 	@media only screen and (min-width: 2000px) {
 		.chat-container {
-			height: 80vh;
+			height: 90vh;
 			max-width: 800px;
 		}
 	}
