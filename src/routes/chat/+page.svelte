@@ -1,10 +1,20 @@
-<main>
-	<div class="chat-container">
-		<div class="chat-box" />
-		<p class="chat-message">testaapo test test test test test test</p>
-		<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
-		<div class="chat-input-container">
-			<input type="text" class="chat-input" />
+<main class="main">
+	<div class="select-container">
+		<select id="mySelect" class="select-box">
+			<option value="" disabled selected>Select an option</option>
+			<option value="option1">Option 1</option>
+			<option value="option2">Option 2</option>
+			<option value="option3">Option 3</option>
+		</select>
+	</div>
+	<div style="grid-column: 2; justify-self: center;">
+		<div class="chat-container">
+			<div class="chat-box" />
+			<p class="chat-message">testaapo test test test test test test</p>
+			<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+			<div class="chat-input-container">
+				<input type="text" class="chat-input" />
+			</div>
 		</div>
 	</div>
 </main>
@@ -70,7 +80,36 @@
 		word-break: break-word;
 	}
 
-	@media only screen and (max-width: 600px) {
+	.select-box {
+		font-family: 'IBM Plex Mono', monospace;
+		background-color: black;
+		color: white;
+		border: none;
+		padding: 10px;
+		font-size: 2vw;
+		cursor: pointer;
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		height: 5vw;
+	}
+
+	select:focus {
+		outline: none;
+	}
+
+	.main {
+		position: relative;
+		display: flex;
+		justify-content: center;
+	}
+
+	.select-container {
+		position: absolute;
+		left: 0;
+	}
+
+	@media only screen and (max-width: 768px) {
 		.chat-container {
 			height: 70vh;
 			max-width: 400px;
@@ -89,11 +128,26 @@
 		}
 
 		.chat-message {
-			font-size: 4vw;
+			font-size: 3vw;
 		}
 
 		.chat-response {
-			font-size: 4vw;
+			font-size: 3vw;
+		}
+
+		.main {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.select-container {
+			position: static;
+			height: 10vw;
+		}
+
+		.select-box {
+			font-size: 5vw;
+			height: 10vw;
 		}
 	}
 
