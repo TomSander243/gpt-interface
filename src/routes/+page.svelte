@@ -8,6 +8,7 @@
 			const regex = /^(sk-|pk-)[a-zA-Z0-9]{48}$/;
 
 			if (regex.test(input!.value)) {
+				localStorage.setItem('api-key', input!.value);
 				window.location.href = '/chat';
 			}
 		});

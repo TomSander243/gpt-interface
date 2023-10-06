@@ -1,3 +1,14 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import Chatmessage from '../../components/Chatmessage.svelte';
+	import Chatresponse from '../../components/Chatresponse.svelte';
+
+	onMount(() => {
+		const apiKey = localStorage.getItem('api-key');
+		console.log(apiKey);
+	});
+</script>
+
 <main class="main">
 	<div class="select-container">
 		<select id="mySelect" class="select-box">
@@ -10,23 +21,8 @@
 	<div style="grid-column: 2; justify-self: center;">
 		<div class="chat-container">
 			<div class="chat-box">
-				<p class="chat-message">testaapo test test test test test test</p>
-				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
-				<p class="chat-message">testaapo test test test test test test</p>
-				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
-				<p class="chat-message">testaapo test test test test test test</p>
-				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
-				<p class="chat-message">testaapo test test test test test test</p>
-				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
-				<p class="chat-message">testaapo test test test test test test</p>
-				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
-				<p class="chat-message">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
-				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
-				<p class="chat-message">
-					test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf
-					adsfasdfasdfasdfasdfasfasfdafd asdfasdfasdfasd
-					asdfasdfafdasfsafasdfasfdafsdfasdfasdfasdfas
-				</p>
+				<Chatmessage content="Hello Gpt!" />
+				<Chatresponse content="Hello User!" />
 			</div>
 			<div class="chat-input-container">
 				<input type="text" class="chat-input" />
@@ -39,6 +35,7 @@
 	.chat-container {
 		width: 100%;
 		max-width: 1000px;
+		min-width: 1000px;
 		height: 90vh;
 		margin: auto;
 		display: flex;
@@ -68,32 +65,6 @@
 		box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2),
 			0 0 40px rgba(255, 255, 255, 0.1);
 		font-family: 'IBM Plex Mono', monospace;
-	}
-
-	.chat-message {
-		font-size: 1.5vw;
-		border-bottom: 1px solid #ccc;
-		width: fit-content;
-		max-width: calc(100% - 4vw);
-		padding: 0.3vw;
-		margin-left: auto;
-		margin-right: 0vw;
-		word-wrap: break-word;
-		overflow-wrap: break-word;
-		word-break: break-word;
-	}
-
-	.chat-response {
-		font-size: 1.5vw;
-		border-bottom: 1px solid #ccc;
-		width: fit-content;
-		max-width: fit-content;
-		padding: 0.3vw;
-		margin-left: 0vw;
-		margin-right: 2vw;
-		word-wrap: break-word;
-		overflow-wrap: break-word;
-		word-break: break-word;
 	}
 
 	.select-box {
@@ -129,6 +100,7 @@
 		.chat-container {
 			height: 90vh;
 			max-width: 400px;
+			min-width: 400px;
 		}
 
 		.chat-box {
@@ -141,14 +113,6 @@
 
 		.chat-input {
 			padding: 2vw;
-		}
-
-		.chat-message {
-			font-size: 3vw;
-		}
-
-		.chat-response {
-			font-size: 3vw;
 		}
 
 		.main {
@@ -171,6 +135,7 @@
 		.chat-container {
 			height: 90vh;
 			max-width: 1200px;
+			min-width: 1200px;
 		}
 	}
 
