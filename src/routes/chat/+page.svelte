@@ -9,9 +9,25 @@
 	</div>
 	<div style="grid-column: 2; justify-self: center;">
 		<div class="chat-container">
-			<div class="chat-box" />
-			<p class="chat-message">testaapo test test test test test test</p>
-			<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+			<div class="chat-box">
+				<p class="chat-message">testaapo test test test test test test</p>
+				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+				<p class="chat-message">testaapo test test test test test test</p>
+				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+				<p class="chat-message">testaapo test test test test test test</p>
+				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+				<p class="chat-message">testaapo test test test test test test</p>
+				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+				<p class="chat-message">testaapo test test test test test test</p>
+				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+				<p class="chat-message">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+				<p class="chat-response">test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf</p>
+				<p class="chat-message">
+					test asdfuhjkasd asdkfgasdjhf asdfasasdfasdfasdfsfddfad asdfsf
+					adsfasdfasdfasdfasdfasfasfdafd asdfasdfasdfasd
+					asdfasdfafdasfsafasdfasfdafsdfasdfasdfasdfas
+				</p>
+			</div>
 			<div class="chat-input-container">
 				<input type="text" class="chat-input" />
 			</div>
@@ -22,7 +38,7 @@
 <style>
 	.chat-container {
 		width: 100%;
-		max-width: 600px;
+		max-width: 1000px;
 		height: 90vh;
 		border: 1px solid #ccc;
 		margin: auto;
@@ -33,9 +49,10 @@
 
 	.chat-box {
 		display: flex;
-		justify-content: flex-end;
 		flex: 1;
-		overflow: auto;
+		flex-direction: column;
+		max-height: 100%;
+		overflow-y: auto;
 		padding: 2vw;
 		font-family: 'IBM Plex Mono', monospace;
 	}
@@ -61,7 +78,7 @@
 		max-width: calc(100% - 4vw);
 		padding: 0.3vw;
 		margin-left: auto;
-		margin-right: 1vw;
+		margin-right: 0vw;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 		word-break: break-word;
@@ -73,7 +90,7 @@
 		width: fit-content;
 		max-width: fit-content;
 		padding: 0.3vw;
-		margin-left: 1vw;
+		margin-left: 0vw;
 		margin-right: 2vw;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
@@ -111,7 +128,7 @@
 
 	@media only screen and (max-width: 768px) {
 		.chat-container {
-			height: 70vh;
+			height: 90vh;
 			max-width: 400px;
 		}
 
@@ -154,7 +171,29 @@
 	@media only screen and (min-width: 2000px) {
 		.chat-container {
 			height: 90vh;
-			max-width: 800px;
+			max-width: 1200px;
 		}
+	}
+
+	.chat-box::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	.chat-box::-webkit-scrollbar-track {
+		background: #000; /* Track background */
+	}
+
+	.chat-box::-webkit-scrollbar-thumb {
+		background: #555; /* Scroll handle */
+	}
+
+	.chat-box::-webkit-scrollbar-thumb:hover {
+		background: #888; /* Scroll handle on hover */
+	}
+
+	/* For Firefox */
+	.chat-box {
+		scrollbar-width: thin;
+		scrollbar-color: #555 #000; /* Scroll handle and track background */
 	}
 </style>
