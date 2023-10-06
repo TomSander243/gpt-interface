@@ -1,7 +1,7 @@
 <main class="main">
 	<div class="select-container">
 		<select id="mySelect" class="select-box">
-			<option value="" disabled selected>Select an option</option>
+			<option value="" disabled selected>Custom Instructions</option>
 			<option value="option1">Option 1</option>
 			<option value="option2">Option 2</option>
 			<option value="option3">Option 3</option>
@@ -40,7 +40,6 @@
 		width: 100%;
 		max-width: 1000px;
 		height: 90vh;
-		border: 1px solid #ccc;
 		margin: auto;
 		display: flex;
 		flex-direction: column;
@@ -58,7 +57,7 @@
 	}
 
 	.chat-input-container {
-		border-top: 1px solid #ccc;
+		border-top: 1px solid #555;
 		padding: 1vw;
 	}
 
@@ -73,7 +72,7 @@
 
 	.chat-message {
 		font-size: 1.5vw;
-		border: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
 		width: fit-content;
 		max-width: calc(100% - 4vw);
 		padding: 0.3vw;
@@ -86,7 +85,7 @@
 
 	.chat-response {
 		font-size: 1.5vw;
-		border: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
 		width: fit-content;
 		max-width: fit-content;
 		padding: 0.3vw;
