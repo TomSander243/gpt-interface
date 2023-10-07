@@ -2,22 +2,19 @@
 	import { onMount } from 'svelte';
 	import Chatmessage from '../../components/Chatmessage.svelte';
 	import Chatresponse from '../../components/Chatresponse.svelte';
+	import { changeKeyClick } from './page.logic';
+	import { changeKeyDown } from './page.logic';
+	import { userSubmit } from './page.logic';
+	import { MessageType } from './messageType';
 
-	function changeKeyClick() {
-		localStorage.removeItem('api-key');
-		window.location.href = '/';
-	}
+	let messages: any[] = [];
 
-	function changeKeyDown(event: KeyboardEvent) {
-		if (event.key === 'Enter') {
-			localStorage.removeItem('api-key');
-			window.location.href = '/';
-		}
+	function handleUserSubmit(e: any) {
+		messages = userSubmit(e, messages);
 	}
 
 	onMount(() => {
 		const apiKey = localStorage.getItem('api-key');
-		console.log(apiKey);
 	});
 </script>
 
@@ -35,9 +32,16 @@
 			<div class="chat-box">
 				<Chatmessage content="Hello Gpt!" />
 				<Chatresponse content="Hello User!" />
+				{#each messages as message}
+					{#if message.type === MessageType.USER}
+						<Chatmessage content={message.content} />
+					{:else}
+						<Chatresponse content={message.content} />
+					{/if}
+				{/each}
 			</div>
 			<div class="chat-input-container">
-				<input type="text" class="chat-input" />
+				<input type="text" class="chat-input" on:keydown={handleUserSubmit} />
 			</div>
 		</div>
 	</div>
