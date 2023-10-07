@@ -2,6 +2,10 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => {
+		if (localStorage.getItem('api-key')) {
+			window.location.href = '/chat';
+		}
+
 		const input = document.querySelector('body > div > main > div > input') as HTMLInputElement;
 
 		input!.addEventListener('input', function () {

@@ -3,6 +3,18 @@
 	import Chatmessage from '../../components/Chatmessage.svelte';
 	import Chatresponse from '../../components/Chatresponse.svelte';
 
+	function changeKeyClick() {
+		localStorage.removeItem('api-key');
+		window.location.href = '/';
+	}
+
+	function changeKeyDown(event: KeyboardEvent) {
+		if (event.key === 'Enter') {
+			localStorage.removeItem('api-key');
+			window.location.href = '/';
+		}
+	}
+
 	onMount(() => {
 		const apiKey = localStorage.getItem('api-key');
 		console.log(apiKey);
@@ -28,6 +40,9 @@
 				<input type="text" class="chat-input" />
 			</div>
 		</div>
+	</div>
+	<div class="button-container" on:click={changeKeyClick} on:keydown={changeKeyDown}>
+		<button class="button">Change API Key</button>
 	</div>
 </main>
 
@@ -94,6 +109,25 @@
 	.select-container {
 		position: absolute;
 		left: 0;
+	}
+
+	.button-container {
+		position: absolute;
+		right: 0;
+	}
+
+	.button {
+		font-family: 'IBM Plex Mono', monospace;
+		background-color: black;
+		color: white;
+		border: none;
+		padding: 10px;
+		font-size: 1vw;
+		cursor: pointer;
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		height: 2.5vw;
 	}
 
 	@media only screen and (max-width: 768px) {
