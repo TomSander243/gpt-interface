@@ -5,12 +5,14 @@
 	import { changeKeyClick } from './page.logic';
 	import { changeKeyDown } from './page.logic';
 	import { userSubmit } from './page.logic';
+	import { gptResponse } from './page.logic';
 	import { MessageType } from './messageType';
 
 	let messages: any[] = [];
 
-	function handleUserSubmit(e: any) {
+	async function handleUserSubmit(e: any) {
 		messages = userSubmit(e, messages);
+		messages = await gptResponse(e, messages);
 	}
 
 	onMount(() => {
