@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { getCookie } from './chat/page.logic';
 
 	onMount(() => {
-		if (localStorage.getItem('api-key')) {
+		if (getCookie('apiKey')) {
 			window.location.href = '/chat';
 		}
 
@@ -12,7 +13,7 @@
 			const regex = /^(sk-|pk-)[a-zA-Z0-9]{48}$/;
 
 			if (regex.test(input!.value)) {
-				localStorage.setItem('api-key', input!.value);
+				document.cookie = 'apiKey=' + input.value + '; path=/;';
 				window.location.href = '/chat';
 			}
 		});

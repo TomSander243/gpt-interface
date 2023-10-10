@@ -7,6 +7,8 @@
 	import { userSubmit } from './page.logic';
 	import { gptResponse } from './page.logic';
 	import { MessageType } from './messageType';
+	import { getCookie } from './page.logic';
+	import { initAPIKey, apiKey } from './page.logic';
 
 	let messages: any[] = [];
 
@@ -15,8 +17,13 @@
 		messages = await gptResponse(e, messages);
 	}
 
+	initAPIKey();
+
 	onMount(() => {
-		const apiKey = localStorage.getItem('api-key');
+		const apiKey = getCookie('apiKey');
+		if (!apiKey) {
+			window.location.href = '/';
+		}
 	});
 </script>
 

@@ -1,19 +1,48 @@
 import { MessageType } from './messageType';
+import { onMount } from 'svelte';
 import OpenAI from 'openai';
 
+export function getCookie(name: string) {
+	const cookieArr = document.cookie.split(';');
+
+	for (let i = 0; i < cookieArr.length; i++) {
+		let cookiePair = cookieArr[i].split('=');
+
+		cookiePair[0] = cookiePair[0].trim();
+
+		if (cookiePair[0] === name) {
+			return decodeURIComponent(cookiePair[1]);
+		}
+	}
+
+	return null;
+}
+
+export let apiKey: string;
+
+export function initAPIKey() {
+	onMount(() => {
+		apiKey = getCookie('apiKey')!;
+	});
+}
+
 export function changeKeyClick() {
-	localStorage.removeItem('api-key');
+	document.cookie = 'apiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 	window.location.href = '/';
 }
 
 export function changeKeyDown(event: KeyboardEvent) {
 	if (event.key === 'Enter') {
-		localStorage.removeItem('api-key');
+		document.cookie = 'apiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 		window.location.href = '/';
 	}
 }
 
-export function addMessage(message: string, type: MessageType, messages: any[]) {
+export function addMessage(message: string | null, type: MessageType, messages: any[]) {
+	if (message === null) {
+		return messages;
+	}
+
 	const newMessage = {
 		content: message,
 		type: type
@@ -42,10 +71,15 @@ export async function gptResponse(e: any, messages: any[]) {
 	}
 }
 
-// Implement better way to store API key
-const openai = new OpenAI({});
+export function setApiKey(callback: (value: string) => void) {
+	const apiKey = getCookie('apiKey');
+	if (apiKey !== null) {
+		callback(apiKey);
+	}
+}
 
 async function fetchGPTResponse(input: string) {
+	const openai = new OpenAI({ apiKey: apiKey, dangerouslyAllowBrowser: true });
 	const chatCompletion = await openai.chat.completions.create({
 		messages: [{ role: 'user', content: input }],
 		model: 'gpt-3.5-turbo',
