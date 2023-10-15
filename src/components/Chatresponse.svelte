@@ -1,5 +1,14 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { scrollToBottom } from '../routes/chat/page.logic';
+
+	function onChatresponseMount() {
+		scrollToBottom();
+	}
+
 	export let content: string;
+
+	onMount(onChatresponseMount);
 </script>
 
 <p class="chat-response">

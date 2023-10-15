@@ -38,7 +38,9 @@
 	</div>
 	<div style="grid-column: 2; justify-self: center;">
 		<div class="chat-container">
-			<div class="chat-box">
+			<div class="chat-box" id="chat-box">
+				<Chatmessage content="Hello Gpt!" />
+				<Chatresponse content="Hello User!" />
 				<Chatmessage content="Hello Gpt!" />
 				<Chatresponse content="Hello User!" />
 				{#each messages as message}

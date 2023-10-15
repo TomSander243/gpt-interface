@@ -64,7 +64,7 @@ export async function gptResponse(e: any, messages: any[]) {
 	if (e.key === 'Enter' && e.target.value !== '') {
 		const input = e.target.value;
 		e.target.value = '';
-		const response = await fetchGPTResponse(input);
+		const response = await fetchGPTResponse(input, messages);
 		return addMessage(response, MessageType.RESPONSE, messages);
 	} else {
 		return messages;
@@ -78,12 +78,26 @@ export function setApiKey(callback: (value: string) => void) {
 	}
 }
 
-async function fetchGPTResponse(input: string) {
+async function fetchGPTResponse(input: string, messages: any[]) {
+	let formattedMessages: any[] = [];
+	messages.forEach((message) => {
+		if (message.type === MessageType.USER) {
+			formattedMessages.push({ role: 'user', content: message.content });
+		}
+		if (message.type === MessageType.RESPONSE) {
+			formattedMessages.push({ role: 'assistant', content: message.content });
+		}
+	});
 	const openai = new OpenAI({ apiKey: apiKey, dangerouslyAllowBrowser: true });
 	const chatCompletion = await openai.chat.completions.create({
-		messages: [{ role: 'user', content: input }],
+		messages: formattedMessages,
 		model: 'gpt-3.5-turbo',
-		max_tokens: 3
+		max_tokens: 200
 	});
 	return chatCompletion.choices[0].message.content;
+}
+
+export function scrollToBottom() {
+	const messageBox = document.getElementById('chat-box');
+	messageBox!.scrollTop = messageBox!.scrollHeight;
 }
